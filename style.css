@@ -1,15 +1,38 @@
 body {
-  background-color: aquamarine;
+  background: url("https://img.freepik.com/free-photo/programming-background-collage_23-2149901782.jpg?w=2000")
+    no-repeat center center fixed;
+  background-size: cover;
 }
 
-h1 {
-  color: blue;
-}
-
-h2 {
-  color: brown;
-}
-
-.header {
+.glass-box {
+  background: rgba(190, 164, 164, 0.26);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 20px;
+  margin: 20px;
   text-align: center;
+}
+
+.subject {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.name {
+  padding: 15px;
+  font-weight: bold;
+}
+
+.button {
+  text-align: center;
+  cursor: pointer;
+  margin-top: 10px;
+  align-items: center;
+  padding: 10px 20px;
+  outline: none;
+  border-radius: 10px;
 }
