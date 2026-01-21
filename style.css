@@ -1,111 +1,38 @@
-/* Basic Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
-}
-
-/* Background */
 body {
   background: url("https://img.freepik.com/free-photo/programming-background-collage_23-2149901782.jpg?w=2000")
     no-repeat center center fixed;
   background-size: cover;
-  color: #fff;
 }
 
-/* Header */
-header {
-  text-align: center;
-  padding: 40px 20px;
-}
-
-.subject {
-  font-size: 36px;
-  font-weight: bold;
-  letter-spacing: 2px;
-}
-
-.name {
-  font-size: 18px;
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-/* Glass Box */
 .glass-box {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
+  background: rgba(190, 164, 164, 0.26);
+  border-radius: 15px;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: 30px;
-  margin: 20px auto;
-  max-width: 700px;
-  text-align: center;
-}
-
-/* Hero Section */
-.hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-}
-
-.hero p {
-  font-size: 1rem;
-  line-height: 1.5;
-  margin-bottom: 20px;
-}
-
-.cta-btn {
-  padding: 12px 30px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 25px;
-  background: #00e5ff;
-  color: #000;
-  cursor: pointer;
-  transition:
-    transform 0.3s,
-    box-shadow 0.3s;
-}
-
-.cta-btn:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 229, 255, 0.5);
-}
-
-/* Features Section */
-.features h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-.feature-cards {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-
-.card {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 20px 30px;
-  border-radius: 15px;
-  backdrop-filter: blur(8px);
-  transition: transform 0.3s;
-}
-
-.card:hover {
-  transform: scale(1.05);
-}
-
-/* Footer */
-footer {
-  text-align: center;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.6);
-  margin-top: 40px;
+  margin: 20px;
+  text-align: center;
+}
+
+.subject {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.name {
+  padding: 15px;
+  font-weight: bold;
+}
+
+.button {
+  text-align: center;
+  cursor: pointer;
+  margin-top: 10px;
+  align-items: center;
+  padding: 10px 20px;
+  outline: none;
+  border-radius: 10px;
 }
