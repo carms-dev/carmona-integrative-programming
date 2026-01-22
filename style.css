@@ -1,38 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
 body {
-  background: url("https://img.freepik.com/free-photo/programming-background-collage_23-2149901782.jpg?w=2000")
-    no-repeat center center fixed;
-  background-size: cover;
-}
-
-.glass-box {
-  background: rgba(190, 164, 164, 0.26);
-  border-radius: 15px;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  min-height: 100vh;
   padding: 20px;
-  margin: 20px;
-  text-align: center;
+  color: white;
+  position: relative;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+    url("https://img.freepik.com/free-photo/programming-background-collage_23-2149901782.jpg?w=2000");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
 }
 
-.subject {
-  text-align: center;
-  font-size: 30px;
+header {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  padding: 18px 25px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
   font-weight: bold;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
+.course {
+  color: #ffffff;
+}
 .name {
-  padding: 15px;
-  font-weight: bold;
+  color: #ffffff;
+}
+
+main {
+  margin-top: 25px;
+  padding: 30px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  line-height: 1.7;
+  font-size: 16px;
 }
 
 .button {
-  text-align: center;
+  margin: 20px;
+  padding: 12px 15px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #38bdf8, #775d6a);
+  color: white;
+  font-weight: bold;
   cursor: pointer;
-  margin-top: 10px;
-  align-items: center;
-  padding: 10px 20px;
-  outline: none;
-  border-radius: 10px;
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+}
+
+.button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+footer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 18px;
+  text-align: center;
+  font-size: 9px;
+  opacity: 0.2;
 }
