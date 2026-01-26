@@ -1,25 +1,35 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <header>
-      <div class="course">IPT 101</div>
-      <div class="name">Rommel Carmona</div>
-    </header>
-    <main>
-      <div class="lorem">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur
-        optio, natus maxime illum repellendus quaerat quas cum mollitia ea odio
-        commodi? Doloremque dolorum iste inventore fugiat quae quaerat omnis.
-        Possimus!
-      </div>
-      <div class="button" onclick="alert('Deleted')">Delete</div>
-    </main>
-    <footer>@IPT101</footer>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IPT 101 Landing Page</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header>
+    <div class="course">IPT 101</div>
+    <div class="name">Rommel Carmona</div>
+  </header>
+
+  <main>
+    <h1>Welcome to IPT 101 🚀</h1>
+    <p class="description">
+      Explore the fundamentals of Information Processing Technology.
+      Learn, create, and build digital solutions through modern web
+      development concepts and hands-on projects.
+    </p>
+
+    <button class="btn" onclick="showMessage()">Get Started</button>
+  </main>
+
+  <footer>© 2026 IPT 101 • All Rights Reserved</footer>
+
+  <script>
+    function showMessage() {
+      alert("Welcome to IPT 101! Let's start learning 💻✨");
+    }
+  </script>
+</body>
 </html>
