@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body onload="loadProfile()">
+    <header>
+      <div class="logo">Dashboard</div>
+      <nav>
+        <a href="index.html" class="nav-btn">Home</a>
+        <button onclick="logout()" class="nav-btn">Logout</button>
+      </nav>
+    </header>
+
+    <main class="dashboard">
+      <section class="profile-card">
+        <img
+          src="https://api.dicebear.com/7.x/avataaars/svg?seed=Rommel"
+          alt="User Avatar"
+          class="avatar"
+        />
+
+        <h2 id="profile-name"></h2>
+        <p>Email: <span id="profile-email"></span></p>
+        <p>Address: <span id="profile-address"></span></p>
+
+        <div class="profile-actions">
+          <a href="settings.html" class="btn settings-btn">⚙ Settings</a>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

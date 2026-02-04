@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body onload="protectPage()">
+    <header>
+      <div class="logo">Settings</div>
+      <nav>
+        <a href="profile.html" class="nav-btn">Back to Profile</a>
+      </nav>
+    </header>
+
+    <main class="dashboard">
+      <section class="settings-card">
+        <h2>Account Settings</h2>
+
+        <form onsubmit="saveSettings(event)" class="settings-form">
+          <label>
+            Email
+            <input id="set-email" type="email" required />
+          </label>
+
+          <label>
+            Address
+            <input id="set-address" required />
+          </label>
+
+          <label>
+            New Password
+            <input id="set-password" type="password" />
+          </label>
+
+          <button class="btn">Save Changes</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

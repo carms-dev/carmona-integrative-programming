@@ -14,17 +14,31 @@
     <main class="auth-container">
       <div class="auth-card">
         <h2>Create Account</h2>
-        <form>
-          <input type="text" placeholder="Full Name" required />
-          <input type="email" placeholder="Email" required />
-          <input type="password" placeholder="Password" required />
-          <input type="password" placeholder="Confirm Password" required />
+
+        <form onsubmit="signup(event)">
+          <input id="signup-name" placeholder="Full Name" required />
+          <input id="signup-email" type="email" placeholder="Email" required />
+          <input
+            id="signup-password"
+            type="password"
+            placeholder="Password"
+            required
+          />
+          <input
+            id="signup-confirm"
+            type="password"
+            placeholder="Confirm Password"
+            required
+          />
           <button class="btn">Sign Up</button>
         </form>
+
         <p class="auth-text">
           Already have an account? <a href="login.html">Login</a>
         </p>
       </div>
     </main>
+
+    <script src="script.js"></script>
   </body>
 </html>

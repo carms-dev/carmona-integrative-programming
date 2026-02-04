@@ -14,15 +14,24 @@
     <main class="auth-container">
       <div class="auth-card">
         <h2>Login</h2>
-        <form>
-          <input type="email" placeholder="Email" required />
-          <input type="password" placeholder="Password" required />
+
+        <form onsubmit="login(event)">
+          <input id="login-email" type="email" placeholder="Email" required />
+          <input
+            id="login-password"
+            type="password"
+            placeholder="Password"
+            required
+          />
           <button class="btn">Login</button>
         </form>
+
         <p class="auth-text">
           Don’t have an account? <a href="signup.html">Sign up</a>
         </p>
       </div>
     </main>
+
+    <script src="script.js"></script>
   </body>
 </html>
