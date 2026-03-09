@@ -118,12 +118,6 @@ nav {
   border: none;
 }
 
-footer {
-  text-align: center;
-  padding: 15px;
-  background: rgba(0, 0, 0, 0.3);
-}
-
 .profile-actions {
   margin-top: 20px;
   display: flex;
@@ -141,4 +135,61 @@ footer {
 
 .avatar:hover {
   transform: scale(1.05);
+}
+
+.settings-card h2 {
+  margin-bottom: 20px;
+}
+
+.settings-card {
+  max-width: 500px;
+}
+
+.settings-form input {
+  margin-top: 6px;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.user-table th,
+.user-table td {
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: left;
+}
+
+.user-table th {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.info-card {
+  background: rgba(255, 255, 255, 0.12);
+  padding: 25px;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  transition: 0.3s;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+}
+
+.site-footer {
+  position: fixed;
+  bottom: 6px;
+  right: 6px;
+  font-size: 0.55rem;
+  font-family: cursive;
+  opacity: 0.7;
+  text-align: right;
 }

@@ -6,9 +6,15 @@
     <title>Login</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
     <header>
-      <a href="index.html" class="nav-btn">Home</a>
+      <div class="logo">IPT 101</div>
+
+      <nav>
+        <a href="index.html" class="nav-btn">Home</a>
+        <a href="signup.html" class="nav-btn">Sign Up</a>
+      </nav>
     </header>
 
     <main class="auth-container">
@@ -17,17 +23,20 @@
 
         <form onsubmit="login(event)">
           <input id="login-email" type="email" placeholder="Email" required />
+
           <input
             id="login-password"
             type="password"
             placeholder="Password"
             required
           />
+
           <button class="btn">Login</button>
         </form>
 
         <p class="auth-text">
-          Don’t have an account? <a href="signup.html">Sign up</a>
+          Don't have an account?
+          <a href="signup.html">Sign Up</a>
         </p>
       </div>
     </main>

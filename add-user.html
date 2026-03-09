@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add User</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">Add User</div>
+
+      <nav>
+        <a href="manage-users.html" class="nav-btn">Back</a>
+      </nav>
+    </header>
+
+    <main class="auth-container">
+      <div class="auth-card">
+        <h2>Create New User</h2>
+
+        <form onsubmit="addUser(event)">
+          <input id="new-name" placeholder="Full Name" required />
+
+          <input id="new-email" type="email" placeholder="Email" required />
+
+          <input
+            id="new-password"
+            type="password"
+            placeholder="Password"
+            required
+          />
+
+          <select id="new-role">
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+          </select>
+
+          <button class="btn">Add User</button>
+        </form>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

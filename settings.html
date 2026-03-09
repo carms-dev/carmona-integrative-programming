@@ -6,35 +6,61 @@
     <title>Settings</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body onload="protectPage()">
+
+  <body onload="loadSettings()">
     <header>
-      <div class="logo">Settings</div>
+      <div class="logo">Account Settings</div>
+
       <nav>
-        <a href="profile.html" class="nav-btn">Back to Profile</a>
+        <a href="profile.html" class="nav-btn">Profile</a>
+        <button onclick="logout()" class="nav-btn">Logout</button>
       </nav>
     </header>
 
     <main class="dashboard">
       <section class="settings-card">
-        <h2>Account Settings</h2>
+        <h2>Account Information</h2>
 
         <form onsubmit="saveSettings(event)" class="settings-form">
           <label>
-            Email
+            Full Name
+            <input id="set-name" required />
+          </label>
+
+          <label>
+            Email Address
             <input id="set-email" type="email" required />
           </label>
 
           <label>
             Address
-            <input id="set-address" required />
+            <input id="set-address" />
+          </label>
+
+          <button class="btn">Save Profile</button>
+        </form>
+      </section>
+
+      <section class="settings-card">
+        <h2>Change Password</h2>
+
+        <form onsubmit="changePassword(event)" class="settings-form">
+          <label>
+            Current Password
+            <input id="current-password" type="password" required />
           </label>
 
           <label>
             New Password
-            <input id="set-password" type="password" />
+            <input id="new-password" type="password" required />
           </label>
 
-          <button class="btn">Save Changes</button>
+          <label>
+            Confirm New Password
+            <input id="confirm-password" type="password" required />
+          </label>
+
+          <button class="btn">Update Password</button>
         </form>
       </section>
     </main>

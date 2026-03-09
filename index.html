@@ -3,26 +3,70 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IPT 101</title>
+    <title>IPT 101 System</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
     <header>
       <div class="logo">IPT 101</div>
+
       <nav>
         <a href="login.html" class="nav-btn">Login</a>
+        <a href="signup.html" class="nav-btn">Sign Up</a>
       </nav>
     </header>
 
-    <main class="hero">
-      <h1>Welcome to IPT 101</h1>
-      <p class="description">
-        A modern frontend system demo with authentication, profile management,
-        and settings control.
-      </p>
-      <a href="login.html" class="btn">Get Started</a>
-    </main>
+    <!-- HERO SECTION -->
 
-    <footer>© 2026 IPT 101</footer>
+    <section class="hero">
+      <h1>IPT Web Design Project</h1>
+
+      <p class="description">
+        A simple web application demonstrating authentication, profile
+        management, account settings, and an admin dashboard.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="signup.html" class="btn">Get Started</a>
+      </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+
+    <section class="dashboard">
+      <div class="info-card">
+        <h3>🔐 Secure Login</h3>
+
+        <p>
+          Users can create accounts and securely login to access their
+          dashboard.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3>👤 Profile Management</h3>
+
+        <p>View and update personal information including email and address.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>⚙ Account Settings</h3>
+
+        <p>
+          Manage account details and update your password from the settings
+          page.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3>🛠 Admin Panel</h3>
+
+        <p>
+          Administrators can manage system users through the admin dashboard.
+        </p>
+      </div>
+    </section>
+    <footer class="site-footer">by Rommel Carmona</footer>
   </body>
 </html>

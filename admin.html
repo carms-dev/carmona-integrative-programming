@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body onload="loadAdmin()">
+    <header>
+      <div class="logo">Admin Dashboard</div>
+
+      <nav>
+        <a href="profile.html" class="nav-btn">Profile</a>
+        <a href="manage-users.html" class="nav-btn">Manage Users</a>
+        <button onclick="logout()" class="nav-btn">Logout</button>
+      </nav>
+    </header>
+
+    <main class="dashboard">
+      <section class="settings-card">
+        <h2>Welcome Admin</h2>
+
+        <p>Use the menu to manage system data.</p>
+
+        <p>From here you can view, add, or delete users in the system.</p>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
