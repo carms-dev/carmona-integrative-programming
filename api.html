@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Country API</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">API</div>
+
+      <nav>
+        <a href="profile.html" class="nav-btn">Profile</a>
+        <a href="settings.html" class="nav-btn">Settings</a>
+        <a href="admin.html" class="nav-btn">Admin</a>
+        <a href="api.html" class="nav-btn">API</a>
+        <button onclick="logout()" class="nav-btn">Logout</button>
+      </nav>
+    </header>
+
+    <section class="api-container">
+      <div class="api-card">
+        <h2>Country Information</h2>
+        <p>Search a country to view information</p>
+
+        <div class="api-search">
+          <input
+            type="text"
+            id="countryInput"
+            placeholder="Enter country name"
+          />
+
+          <button onclick="searchCountry()" class="btn">Search</button>
+        </div>
+
+        <div id="result" class="api-result"></div>
+      </div>
+    </section>
+
+    <footer class="site-footer">API Integration Activity</footer>
+
+    <script src="script.js"></script>
+    <script src="api.js"></script>
+  </body>
+</html>

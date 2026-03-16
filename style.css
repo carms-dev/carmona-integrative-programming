@@ -193,3 +193,49 @@ nav {
   opacity: 0.7;
   text-align: right;
 }
+
+/* API PAGE */
+
+.api-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.api-card {
+  width: 420px;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  text-align: center;
+}
+
+.api-search {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.api-search input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+.api-result {
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+.api-error {
+  margin-top: 15px;
+  color: #ffb3b3;
+}
+
+.loading {
+  margin-top: 15px;
+  opacity: 0.7;
+}
