@@ -2,43 +2,70 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Country API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Explorer - Search Artists</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
   </head>
 
   <body>
     <header>
-      <div class="logo">API</div>
+      <div class="logo"><i class="fas fa-music"></i> Music Explorer</div>
 
       <nav>
-        <a href="profile.html" class="nav-btn">Profile</a>
-        <a href="settings.html" class="nav-btn">Settings</a>
-        <a href="admin.html" class="nav-btn">Admin</a>
-        <a href="api.html" class="nav-btn">API</a>
-        <button onclick="logout()" class="nav-btn">Logout</button>
+        <a href="profile.html" class="nav-btn">
+          <i class="fas fa-user"></i> Profile
+        </a>
+        <a href="admin.html" class="nav-btn">
+          <i class="fas fa-tachometer-alt"></i> Dashboard
+        </a>
+        <a
+          href="saved-items.html"
+          class="nav-btn"
+          style="background: #ffd369; color: #1f1c2c"
+        >
+          <i class="fas fa-bookmark"></i> Saved
+          <span
+            id="saved-count-badge"
+            style="
+              background: #1f1c2c;
+              color: #ffd369;
+              padding: 2px 8px;
+              border-radius: 20px;
+              margin-left: 5px;
+            "
+            >0</span
+          >
+        </a>
+        <button onclick="logout()" class="nav-btn">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
       </nav>
     </header>
 
-    <section class="api-container">
-      <div class="api-card">
-        <h2>Country Information</h2>
-        <p>Search a country to view information</p>
+    <main class="api-container">
+      <div class="api-card" style="width: 800px; max-width: 95%">
+        <h2><i class="fas fa-search"></i> Search Music Artists</h2>
+        <p>Enter an artist name to discover their albums</p>
 
         <div class="api-search">
           <input
             type="text"
-            id="countryInput"
-            placeholder="Enter country name"
+            id="musicInput"
+            placeholder="Enter artist name (e.g., Coldplay, Taylor Swift, BTS)"
+            onkeypress="if (event.key === 'Enter') searchMusic();"
           />
-
-          <button onclick="searchCountry()" class="btn">Search</button>
+          <button onclick="searchMusic()" class="btn">
+            <i class="fas fa-search"></i> Search
+          </button>
         </div>
 
         <div id="result" class="api-result"></div>
       </div>
-    </section>
-
-    <footer class="site-footer">API Integration Activity</footer>
+    </main>
 
     <script src="script.js"></script>
     <script src="api.js"></script>

@@ -5,27 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
   </head>
 
   <body onload="loadAdmin()">
     <header>
-      <div class="logo">Admin Dashboard</div>
+      <div class="logo"><i class="fas fa-crown"></i> Admin Dashboard</div>
 
       <nav>
-        <a href="profile.html" class="nav-btn">Profile</a>
-        <a href="manage-users.html" class="nav-btn">Manage Users</a>
-        <a href="api.html" class="nav-btn">API</a>
-        <button onclick="logout()" class="nav-btn">Logout</button>
+        <a href="profile.html" class="nav-btn">
+          <i class="fas fa-user"></i> Profile
+        </a>
+        <a href="manage-users.html" class="nav-btn">
+          <i class="fas fa-users-cog"></i> Manage Users
+        </a>
+        <a href="api.html" class="nav-btn">
+          <i class="fas fa-globe"></i> Song API
+        </a>
+        <button onclick="logout()" class="nav-btn">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
       </nav>
     </header>
 
     <main class="dashboard">
       <section class="settings-card">
-        <h2>Welcome Admin</h2>
+        <h2>
+          <i class="fas fa-star"></i> Welcome, <span id="admin-name"></span>!
+        </h2>
 
-        <p>Use the menu to manage system data.</p>
+        <div class="admin-stats">
+          <div class="stat-box">
+            <i class="fas fa-users"></i>
+            <h3 id="total-users">0</h3>
+            <p>Total Users</p>
+          </div>
+          <div class="stat-box">
+            <i class="fas fa-crown"></i>
+            <h3 id="total-admins">0</h3>
+            <p>Admins</p>
+          </div>
+          <div class="stat-box">
+            <i class="fas fa-calendar"></i>
+            <h3>Today</h3>
+            <p><span id="current-date"></span></p>
+          </div>
+        </div>
 
-        <p>From here you can view, add, or delete users in the system.</p>
+        <div class="admin-quick-actions">
+          <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+          <div class="quick-action-grid">
+            <a href="manage-users.html" class="quick-action-card">
+              <i class="fas fa-user-plus"></i>
+              <span>Add User</span>
+            </a>
+            <a href="api.html" class="quick-action-card">
+              <i class="fas fa-search"></i>
+              <span>Search Songs</span>
+            </a>
+            <a href="profile.html" class="quick-action-card">
+              <i class="fas fa-id-card"></i>
+              <span>View Profile</span>
+            </a>
+          </div>
+        </div>
       </section>
     </main>
 

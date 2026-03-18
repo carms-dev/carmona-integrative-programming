@@ -5,62 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Settings</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
   </head>
 
   <body onload="loadSettings()">
     <header>
-      <div class="logo">Account Settings</div>
+      <div class="logo"><i class="fas fa-sliders-h"></i> Account Settings</div>
 
       <nav>
-        <a href="profile.html" class="nav-btn">Profile</a>
-        <button onclick="logout()" class="nav-btn">Logout</button>
+        <a href="profile.html" class="nav-btn">
+          <i class="fas fa-arrow-left"></i> Back to Profile
+        </a>
+        <button onclick="logout()" class="nav-btn">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
       </nav>
     </header>
 
-    <main class="dashboard">
+    <main class="dashboard settings-dashboard">
       <section class="settings-card">
-        <h2>Account Information</h2>
+        <h2><i class="fas fa-id-card"></i> Account Information</h2>
 
         <form onsubmit="saveSettings(event)" class="settings-form">
-          <label>
-            Full Name
-            <input id="set-name" required />
-          </label>
+          <div class="input-group">
+            <i class="fas fa-user input-icon"></i>
+            <input id="set-name" placeholder="Full Name" required />
+          </div>
 
-          <label>
-            Email Address
-            <input id="set-email" type="email" required />
-          </label>
+          <div class="input-group">
+            <i class="fas fa-envelope input-icon"></i>
+            <input id="set-email" type="email" placeholder="Email" required />
+          </div>
 
-          <label>
-            Address
-            <input id="set-address" />
-          </label>
+          <div class="input-group">
+            <i class="fas fa-map-marker-alt input-icon"></i>
+            <input id="set-address" placeholder="Address" />
+          </div>
 
-          <button class="btn">Save Profile</button>
+          <button class="btn btn-primary">
+            <i class="fas fa-save"></i> Save Changes
+          </button>
         </form>
       </section>
 
       <section class="settings-card">
-        <h2>Change Password</h2>
+        <h2><i class="fas fa-lock"></i> Change Password</h2>
 
         <form onsubmit="changePassword(event)" class="settings-form">
-          <label>
-            Current Password
-            <input id="current-password" type="password" required />
-          </label>
+          <div class="input-group">
+            <i class="fas fa-lock input-icon"></i>
+            <input
+              id="current-password"
+              type="password"
+              placeholder="Current Password"
+              required
+            />
+          </div>
 
-          <label>
-            New Password
-            <input id="new-password" type="password" required />
-          </label>
+          <div class="input-group">
+            <i class="fas fa-key input-icon"></i>
+            <input
+              id="new-password"
+              type="password"
+              placeholder="New Password"
+              required
+            />
+          </div>
 
-          <label>
-            Confirm New Password
-            <input id="confirm-password" type="password" required />
-          </label>
+          <div class="input-group">
+            <i class="fas fa-check-circle input-icon"></i>
+            <input
+              id="confirm-password"
+              type="password"
+              placeholder="Confirm New Password"
+              required
+            />
+          </div>
 
-          <button class="btn">Update Password</button>
+          <button class="btn btn-primary">
+            <i class="fas fa-sync-alt"></i> Update Password
+          </button>
         </form>
       </section>
     </main>
