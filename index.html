@@ -3,70 +3,198 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IPT 101 System</title>
+    <title>MelodyHub - Discover & Save Your Favorite Music</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
   </head>
 
   <body>
     <header>
-      <div class="logo">IPT 101</div>
+      <div class="logo"><i class="fas fa-headphones"></i> MelodyHub</div>
 
       <nav>
-        <a href="login.html" class="nav-btn">Login</a>
-        <a href="signup.html" class="nav-btn">Sign Up</a>
+        <a href="login.html" class="nav-btn">
+          <i class="fas fa-sign-in-alt"></i> Login
+        </a>
+        <a href="signup.html" class="nav-btn">
+          <i class="fas fa-user-plus"></i> Sign Up
+        </a>
       </nav>
     </header>
 
     <!-- HERO SECTION -->
-
     <section class="hero">
-      <h1>IPT Web Design Project</h1>
-
-      <p class="description">
-        A simple web application demonstrating authentication, profile
-        management, account settings, and an admin dashboard.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="signup.html" class="btn">Get Started</a>
+      <div class="hero-content">
+        <h1>🎵 Discover Your Next Favorite Song</h1>
+        <p class="description">
+          Search for any artist or song, listen to 30-second previews, and save
+          your favorite tracks to your personal collection. Your music, your
+          way.
+        </p>
+        <div class="hero-buttons">
+          <a href="signup.html" class="btn btn-primary">
+            <i class="fas fa-music"></i> Get Started Free
+          </a>
+          <a href="login.html" class="btn btn-outline">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </a>
+        </div>
       </div>
     </section>
 
     <!-- FEATURES SECTION -->
+    <section class="features">
+      <h2 class="section-title">
+        <i class="fas fa-star"></i> What Makes MelodyHub Special
+      </h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <h3>Search Any Artist</h3>
+          <p>
+            Find your favorite artists and songs instantly. From Taylor Swift to
+            BTS, we've got you covered.
+          </p>
+        </div>
 
-    <section class="dashboard">
-      <div class="info-card">
-        <h3>🔐 Secure Login</h3>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-play-circle"></i>
+          </div>
+          <h3>30-Second Previews</h3>
+          <p>
+            Listen to previews before you save. Hear 30 seconds of every track
+            to make sure you love it.
+          </p>
+        </div>
 
-        <p>
-          Users can create accounts and securely login to access their
-          dashboard.
-        </p>
-      </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-bookmark"></i>
+          </div>
+          <h3>Save Your Favorites</h3>
+          <p>
+            Build your personal music collection. Save songs you love and access
+            them anytime.
+          </p>
+        </div>
 
-      <div class="info-card">
-        <h3>👤 Profile Management</h3>
-
-        <p>View and update personal information including email and address.</p>
-      </div>
-
-      <div class="info-card">
-        <h3>⚙ Account Settings</h3>
-
-        <p>
-          Manage account details and update your password from the settings
-          page.
-        </p>
-      </div>
-
-      <div class="info-card">
-        <h3>🛠 Admin Panel</h3>
-
-        <p>
-          Administrators can manage system users through the admin dashboard.
-        </p>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-save"></i>
+          </div>
+          <h3>Never Lose Your Music</h3>
+          <p>
+            Your saved songs stay even after you close the browser. Refresh and
+            they're still there!
+          </p>
+        </div>
       </div>
     </section>
-    <footer class="site-footer">by Rommel Carmona</footer>
+
+    <!-- HOW IT WORKS SECTION -->
+    <section class="how-it-works">
+      <h2 class="section-title"><i class="fas fa-compass"></i> How It Works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <i class="fas fa-user-plus step-icon"></i>
+          <h3>Create Account</h3>
+          <p>Sign up for free and start building your music collection.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <i class="fas fa-search step-icon"></i>
+          <h3>Search Music</h3>
+          <p>Type any artist or song name and browse through results.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <i class="fas fa-headphones step-icon"></i>
+          <h3>Preview & Save</h3>
+          <p>Listen to 30-second previews and save your favorite tracks.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <i class="fas fa-heart step-icon"></i>
+          <h3>Enjoy Your Collection</h3>
+          <p>View all your saved songs in one place. Listen anytime!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- POPULAR ARTISTS SECTION -->
+    <section class="popular-artists">
+      <h2 class="section-title">
+        <i class="fas fa-chart-line"></i> Popular Artists to Search
+      </h2>
+      <div class="artist-grid">
+        <div class="artist-card" onclick="goToSearch('Taylor Swift')">
+          <i class="fas fa-user-circle"></i>
+          <h3>Taylor Swift</h3>
+          <p>Pop • Country</p>
+        </div>
+        <div class="artist-card" onclick="goToSearch('BTS')">
+          <i class="fas fa-users"></i>
+          <h3>BTS</h3>
+          <p>K-Pop • Pop</p>
+        </div>
+        <div class="artist-card" onclick="goToSearch('Coldplay')">
+          <i class="fas fa-guitar"></i>
+          <h3>Coldplay</h3>
+          <p>Rock • Alternative</p>
+        </div>
+        <div class="artist-card" onclick="goToSearch('Bruno Mars')">
+          <i class="fas fa-microphone-alt"></i>
+          <h3>Bruno Mars</h3>
+          <p>Pop • R&B</p>
+        </div>
+        <div class="artist-card" onclick="goToSearch('Ed Sheeran')">
+          <i class="fas fa-guitar"></i>
+          <h3>Ed Sheeran</h3>
+          <p>Pop • Acoustic</p>
+        </div>
+        <div class="artist-card" onclick="goToSearch('Ariana Grande')">
+          <i class="fas fa-microphone-alt"></i>
+          <h3>Ariana Grande</h3>
+          <p>Pop • R&B</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2>Ready to Discover Your Next Favorite Song?</h2>
+        <p>
+          Join thousands of music lovers who use MelodyHub to discover and save
+          amazing music.
+        </p>
+        <a href="signup.html" class="btn btn-large">
+          <i class="fas fa-music"></i> Start Exploring Now
+        </a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <i class="fas fa-headphones"></i> MelodyHub
+        </div>
+        <p class="footer-text">
+          Your personal music discovery platform. Powered by iTunes API.
+        </p>
+        <p class="footer-copyright">
+          by Rommel Carmona | IPT 101 Integrative Programming
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>

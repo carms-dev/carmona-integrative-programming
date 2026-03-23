@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Music Explorer - Search Artists</title>
+    <title>Music Explorer - Search & Save</title>
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
@@ -27,7 +27,7 @@
           class="nav-btn"
           style="background: #ffd369; color: #1f1c2c"
         >
-          <i class="fas fa-bookmark"></i> Saved
+          <i class="fas fa-bookmark"></i> My Music
           <span
             id="saved-count-badge"
             style="
@@ -47,15 +47,18 @@
     </header>
 
     <main class="api-container">
-      <div class="api-card" style="width: 800px; max-width: 95%">
-        <h2><i class="fas fa-search"></i> Search Music Artists</h2>
-        <p>Enter an artist name to discover their albums</p>
+      <div class="api-card">
+        <h2><i class="fas fa-headphones"></i> Discover Music</h2>
+        <p>
+          Search for your favorite artists and songs. Save them to your personal
+          collection!
+        </p>
 
         <div class="api-search">
           <input
             type="text"
             id="musicInput"
-            placeholder="Enter artist name (e.g., Coldplay, Taylor Swift, BTS)"
+            placeholder="Search artist or song (ex: Taylor Swift, BTS, Coldplay)"
             onkeypress="if (event.key === 'Enter') searchMusic();"
           />
           <button onclick="searchMusic()" class="btn">
@@ -63,7 +66,14 @@
           </button>
         </div>
 
-        <div id="result" class="api-result"></div>
+        <div id="result" class="api-result">
+          <div class="welcome-message">
+            <i class="fas fa-music"></i>
+            <h3>Welcome to Music Explorer!</h3>
+            <p>Search for any artist or song above to get started.</p>
+            <small>Try: Taylor Swift, BTS, Coldplay, Bruno Mars</small>
+          </div>
+        </div>
       </div>
     </main>
 

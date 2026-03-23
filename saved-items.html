@@ -3,23 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Saved Countries</title>
+    <title>My Music Collection</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
   </head>
 
   <body onload="loadSavedItems()">
     <header>
-      <div class="logo">
-        <i class="fas fa-bookmark"></i> My Saved Songs
-      </div>
+      <div class="logo"><i class="fas fa-heart"></i> My Music Collection</div>
 
       <nav>
         <a href="profile.html" class="nav-btn">
           <i class="fas fa-user"></i> Profile
         </a>
         <a href="api.html" class="nav-btn">
-          <i class="fas fa-globe"></i> Search More
+          <i class="fas fa-search"></i> Discover Music
         </a>
         <button onclick="logout()" class="nav-btn">
           <i class="fas fa-sign-out-alt"></i> Logout
@@ -28,9 +29,15 @@
     </header>
 
     <main class="dashboard">
-      <section class="settings-card" style="max-width: 1200px; grid-column: span 3;">
-        <h2><i class="fas fa-heart"></i> Your Saved Songs</h2>
-        
+      <section
+        class="settings-card"
+        style="max-width: 1200px; grid-column: span 3"
+      >
+        <h2><i class="fas fa-bookmark"></i> Your Saved Tracks</h2>
+        <p class="collection-info">
+          Songs you saved will appear here. They stay even after you refresh!
+        </p>
+
         <div id="saved-items-container" class="saved-items-grid">
           <!-- Saved items will be displayed here -->
         </div>

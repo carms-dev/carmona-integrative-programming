@@ -95,6 +95,18 @@ function logout() {
   window.location.href = "login.html";
 }
 
+// ==================== LANDING PAGE ====================
+function goToSearch(artist) {
+  // Redirect to login page if not logged in
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  if (isLoggedIn) {
+    window.location.href = `api.html?search=${encodeURIComponent(artist)}`;
+  } else {
+    alert("Please login first to search music!");
+    window.location.href = "login.html";
+  }
+}
+
 // ==================== PROFILE PAGE ====================
 function loadProfile() {
   protectPage();

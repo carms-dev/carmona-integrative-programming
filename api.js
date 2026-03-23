@@ -1,9 +1,11 @@
 // ==================== HELPER FUNCTIONS ====================
+let currentAudio = null;
+let currentPlayingId = null;
+
 function isLoggedIn() {
   return localStorage.getItem("isLoggedIn") === "true";
 }
 
-// Show notification (reused from script.js)
 function showNotification(message, type = "info") {
   const existingNotif = document.querySelector(".notification");
   if (existingNotif) {
@@ -30,7 +32,6 @@ function showNotification(message, type = "info") {
   }, 3000);
 }
 
-// Update the saved count badge
 function updateSavedCount() {
   const savedMusic = JSON.parse(localStorage.getItem("savedMusic")) || [];
   const badge = document.getElementById("saved-count-badge");
@@ -39,12 +40,67 @@ function updateSavedCount() {
   }
 }
 
-// ==================== SAVE FEATURE FUNCTIONS ====================
+// ==================== AUDIO PREVIEW FUNCTION ====================
+function playPreview(trackId, previewUrl, buttonElement) {
+  // Stop any currently playing audio
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio = null;
+
+    // Reset the previous button
+    if (
+      currentPlayingId &&
+      document.getElementById(`preview-btn-${currentPlayingId}`)
+    ) {
+      const prevBtn = document.getElementById(
+        `preview-btn-${currentPlayingId}`,
+      );
+      prevBtn.innerHTML = '<i class="fas fa-play"></i> Preview 30s';
+      prevBtn.style.background = "transparent";
+    }
+  }
+
+  // If clicking the same track that was playing, just stop
+  if (currentPlayingId === trackId) {
+    currentPlayingId = null;
+    return;
+  }
+
+  // Play new track
+  if (previewUrl) {
+    currentAudio = new Audio(previewUrl);
+    currentAudio.play().catch((e) => {
+      showNotification("Click anywhere to enable audio", "info");
+    });
+
+    currentPlayingId = trackId;
+
+    // Update button to show playing state
+    if (buttonElement) {
+      buttonElement.innerHTML = '<i class="fas fa-stop"></i> Stop';
+      buttonElement.style.background = "#ffd369";
+      buttonElement.style.color = "#1f1c2c";
+    }
+
+    // When audio ends, reset button
+    currentAudio.onended = function () {
+      if (document.getElementById(`preview-btn-${trackId}`)) {
+        const btn = document.getElementById(`preview-btn-${trackId}`);
+        btn.innerHTML = '<i class="fas fa-play"></i> Preview 30s';
+        btn.style.background = "transparent";
+      }
+      currentPlayingId = null;
+      currentAudio = null;
+    };
+  } else {
+    showNotification("No preview available for this track", "error");
+  }
+}
+
+// ==================== SAVE FEATURE ====================
 function saveMusic(musicData) {
-  // Get existing saved music from localStorage
   let savedMusic = JSON.parse(localStorage.getItem("savedMusic")) || [];
 
-  // Check for duplicates (by track ID or name+artist)
   const exists = savedMusic.some(
     (item) =>
       item.trackId === musicData.trackId ||
@@ -53,49 +109,51 @@ function saveMusic(musicData) {
 
   if (exists) {
     showNotification(
-      `${musicData.track} by ${musicData.artist} is already saved!`,
+      `${musicData.track} is already in your collection!`,
       "error",
     );
     return;
   }
 
-  // Add timestamp when saved
   musicData.savedAt = new Date().toISOString();
-
-  // Add to array
   savedMusic.push(musicData);
-
-  // Save back to localStorage
   localStorage.setItem("savedMusic", JSON.stringify(savedMusic));
 
-  // Show success message
-  showNotification(`${musicData.track} saved successfully!`, "success");
-
-  // Update saved count badge
+  showNotification(
+    `${musicData.track} added to your collection! 🎵`,
+    "success",
+  );
   updateSavedCount();
+
+  const saveBtn = document.querySelector(
+    `button[onclick*="'${musicData.trackId}'"]`,
+  );
+  if (saveBtn) {
+    saveBtn.innerHTML = '<i class="fas fa-check"></i> Saved';
+    saveBtn.disabled = true;
+  }
 
   return musicData;
 }
 
 function loadSavedItems() {
-  // Check if user is logged in
   if (!isLoggedIn()) {
     window.location.href = "login.html";
     return;
   }
 
   const container = document.getElementById("saved-items-container");
-  if (!container) return; // Exit if not on saved-items page
+  if (!container) return;
 
   const savedMusic = JSON.parse(localStorage.getItem("savedMusic")) || [];
 
   if (savedMusic.length === 0) {
     container.innerHTML = `
       <div class="empty-state">
-        <i class="fas fa-music"></i>
-        <h3>No saved music yet</h3>
-        <p>Go to the Music Search page and save your favorite tracks!</p>
-        <a href="api.html" class="btn">Search Music</a>
+        <i class="fas fa-headphones"></i>
+        <h3>Your music collection is empty</h3>
+        <p>Go to Music Explorer and save your favorite tracks!</p>
+        <a href="api.html" class="btn">Discover Music</a>
       </div>
     `;
     return;
@@ -113,13 +171,22 @@ function loadSavedItems() {
         <h3>${item.track}</h3>
         <p class="artist-name">${item.artist}</p>
         <div class="saved-info">
-          <p><i class="fas fa-compact-disc"></i> Album: ${item.album || "N/A"}</p>
-          <p><i class="fas fa-calendar"></i> Year: ${item.year || "N/A"}</p>
+          <p><i class="fas fa-compact-disc"></i> ${item.album || "Single"}</p>
+          <p><i class="fas fa-calendar"></i> ${item.year || "N/A"}</p>
           ${item.genre ? `<p><i class="fas fa-tag"></i> ${item.genre}</p>` : ""}
         </div>
+        ${
+          item.previewUrl
+            ? `
+          <button id="preview-btn-${item.trackId}" class="preview-btn" onclick="playPreview('${item.trackId}', '${item.previewUrl}', this)">
+            <i class="fas fa-play"></i> Preview 30s
+          </button>
+        `
+            : '<p class="no-preview">No preview available</p>'
+        }
         <p class="saved-date">
           <i class="fas fa-clock"></i> 
-          Saved: ${new Date(item.savedAt).toLocaleDateString()}
+          Added: ${new Date(item.savedAt).toLocaleDateString()}
         </p>
         <button onclick="removeSavedItem(${index})" class="delete-btn">
           <i class="fas fa-trash"></i> Remove
@@ -134,17 +201,22 @@ function loadSavedItems() {
 function removeSavedItem(index) {
   let savedMusic = JSON.parse(localStorage.getItem("savedMusic")) || [];
 
-  if (confirm(`Remove "${savedMusic[index].track}" from saved?`)) {
+  if (confirm(`Remove "${savedMusic[index].track}" from your collection?`)) {
+    // Stop audio if playing
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio = null;
+      currentPlayingId = null;
+    }
     savedMusic.splice(index, 1);
     localStorage.setItem("savedMusic", JSON.stringify(savedMusic));
-
-    showNotification("Track removed from saved", "info");
-    loadSavedItems(); // Refresh the display
-    updateSavedCount(); // Update badge
+    showNotification("Track removed from collection", "info");
+    loadSavedItems();
+    updateSavedCount();
   }
 }
 
-// ==================== MUSIC SEARCH FUNCTION (iTunes API) ====================
+// ==================== MUSIC SEARCH (iTunes API) ====================
 function searchMusic() {
   const searchTerm = document.getElementById("musicInput").value.trim();
   const result = document.getElementById("result");
@@ -164,7 +236,6 @@ function searchMusic() {
       Searching for "${searchTerm}"...
     </div>`;
 
-  // Using iTunes API - no key needed, works perfectly!
   fetch(
     `https://itunes.apple.com/search?term=${encodeURIComponent(searchTerm)}&limit=25&media=music`,
   )
@@ -175,7 +246,6 @@ function searchMusic() {
       return response.json();
     })
     .then((data) => {
-      // Check if results were found
       if (!data.results || data.results.length === 0) {
         result.innerHTML = `
           <div class="api-error">
@@ -186,7 +256,6 @@ function searchMusic() {
         `;
         return;
       }
-
       displayMusicResults(data.results, searchTerm);
     })
     .catch((error) => {
@@ -202,35 +271,25 @@ function searchMusic() {
 
 function displayMusicResults(results, searchTerm) {
   const result = document.getElementById("result");
-
-  // Get saved music to check if already saved
   const savedMusic = JSON.parse(localStorage.getItem("savedMusic")) || [];
-
-  // Group by artist for better display
-  const artistInfo = results[0].artistName;
 
   let html = `
     <div class="music-results">
       <div class="results-header">
         <h2><i class="fas fa-search"></i> Results for "${searchTerm}"</h2>
-        <p>Found ${results.length} tracks</p>
+        <p>Found ${results.length} songs • Click the preview button to listen to 30-second samples!</p>
       </div>
       
       <div class="tracks-grid">
   `;
 
-  // Display each track
-  results.forEach((track, index) => {
-    const isSaved = savedMusic.some(
-      (item) =>
-        item.trackId === track.trackId ||
-        (item.track === track.trackName && item.artist === track.artistName),
-    );
-
-    // Get year from release date
+  results.forEach((track) => {
+    const isSaved = savedMusic.some((item) => item.trackId === track.trackId);
     const year = track.releaseDate
       ? new Date(track.releaseDate).getFullYear()
       : "N/A";
+    const trackId = track.trackId;
+    const previewUrl = track.previewUrl || "";
 
     html += `
       <div class="track-card">
@@ -247,33 +306,32 @@ function displayMusicResults(results, searchTerm) {
           <p class="track-year">
             <i class="fas fa-calendar"></i> ${year}
           </p>
-          <p class="track-genre">
-            <i class="fas fa-tag"></i> ${track.primaryGenreName || "N/A"}
-          </p>
-          <button onclick='saveMusic(${JSON.stringify({
-            trackId: track.trackId,
-            track: track.trackName,
-            artist: track.artistName,
-            album: track.collectionName || "Single",
-            year: year,
-            genre: track.primaryGenreName || "Unknown",
-            artworkUrl: track.artworkUrl100
-              ? track.artworkUrl100.replace("100x100", "300x300")
-              : "",
-            previewUrl: track.previewUrl || "",
-          })})' class="btn save-btn-small" ${isSaved ? "disabled" : ""}>
-            <i class="fas ${isSaved ? "fa-check" : "fa-bookmark"}"></i>
-            ${isSaved ? "Saved" : "Save Track"}
-          </button>
-          ${
-            track.previewUrl
-              ? `
-            <button onclick="playPreview('${track.previewUrl}')" class="preview-btn">
-              <i class="fas fa-play"></i> Preview
+          <div class="track-actions">
+            <button onclick='saveMusic(${JSON.stringify({
+              trackId: track.trackId,
+              track: track.trackName,
+              artist: track.artistName,
+              album: track.collectionName || "Single",
+              year: year,
+              genre: track.primaryGenreName || "Unknown",
+              artworkUrl: track.artworkUrl100
+                ? track.artworkUrl100.replace("100x100", "300x300")
+                : "",
+              previewUrl: track.previewUrl || "",
+            })})' class="save-btn-small" ${isSaved ? "disabled" : ""}>
+              <i class="fas ${isSaved ? "fa-check" : "fa-bookmark"}"></i>
+              ${isSaved ? "In Collection" : "Save"}
             </button>
-          `
-              : ""
-          }
+            ${
+              previewUrl
+                ? `
+              <button id="preview-btn-${trackId}" class="preview-btn" onclick="playPreview('${trackId}', '${previewUrl}', this)">
+                <i class="fas fa-play"></i> Preview 30s
+              </button>
+            `
+                : '<button class="preview-btn disabled" disabled><i class="fas fa-music"></i> No Preview</button>'
+            }
+          </div>
         </div>
       </div>
     `;
@@ -283,23 +341,8 @@ function displayMusicResults(results, searchTerm) {
   result.innerHTML = html;
 }
 
-// Optional: Add preview playback
-function playPreview(url) {
-  // Stop any currently playing audio
-  if (window.audioPlayer) {
-    window.audioPlayer.pause();
-  }
-
-  // Create and play new audio
-  window.audioPlayer = new Audio(url);
-  window.audioPlayer.play().catch((e) => {
-    showNotification("Click to enable audio", "info");
-  });
-}
-
 // ==================== PAGE INITIALIZATION ====================
 document.addEventListener("DOMContentLoaded", function () {
-  // Check if user is logged in for protected pages
   if (
     window.location.pathname.includes("api.html") ||
     window.location.pathname.includes("saved-items.html")
@@ -310,7 +353,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Add enter key support for api.html
   const input = document.getElementById("musicInput");
   if (input) {
     input.addEventListener("keypress", function (e) {
@@ -320,10 +362,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Update saved count badge if on api.html
   updateSavedCount();
 
-  // Load saved items if on saved-items.html
   if (window.location.pathname.includes("saved-items.html")) {
     loadSavedItems();
   }
